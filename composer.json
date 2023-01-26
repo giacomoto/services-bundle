@@ -1,0 +1,19 @@
+{
+    "name": "luckyseven/services",
+    "description": "",
+    "type": "symfony-bundle",
+    "minimum-stability": "stable",
+    "version": "1.0",
+    "require": {},
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Luckyseven\\Bundle\\LuckysevenServicesBundle\\": ""
+        }
+    },
+    "authors": [
+        {
+            "name": "Luckyseven S.r.l."
+        }
+    ]
+}

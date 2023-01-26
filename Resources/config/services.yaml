@@ -1,0 +1,17 @@
+parameters:
+
+services:
+    Luckyseven\Bundle\LuckysevenServicesBundle\Repository\EntityServiceRepository:
+        tags: [ 'doctrine.repository_service' ]
+        arguments:
+            $registry: '@Doctrine\Common\Persistence\ManagerRegistry'
+
+    Luckyseven\Bundle\LuckysevenServicesBundle\Repository\ServiceRepository:
+        tags: [ 'doctrine.repository_service' ]
+        arguments:
+            $registry: '@Doctrine\Common\Persistence\ManagerRegistry'
+
+    Luckyseven\Bundle\LuckysevenServicesBundle\Service\LuckysevenServicesService:
+        arguments:
+            $entityManager: '@doctrine.orm.default_entity_manager'
+            $serviceEntity: '%luckyseven_services.service_entity%'
