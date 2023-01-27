@@ -3,9 +3,10 @@
 namespace Luckyseven\Bundle\LuckysevenServicesBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Luckyseven\Bundle\LuckysevenServicesBundle\Interface\IService;
 
 #[ORM\MappedSuperclass]
-class Service
+class Service implements IService
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]

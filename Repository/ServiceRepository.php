@@ -8,16 +8,16 @@ use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Luckyseven\Bundle\LuckysevenServicesBundle\Entity\EntityService;
-use Luckyseven\Bundle\LuckysevenServicesBundle\Entity\Service;
 use Luckyseven\Bundle\LuckysevenServicesBundle\Interface\IEntityHasServices;
+use Luckyseven\Bundle\LuckysevenServicesBundle\Interface\IService;
 
 /**
- * @extends ServiceEntityRepository<Service>
+ * @extends ServiceEntityRepository<IService>
  *
- * @method Service|null find($id, $lockMode = null, $lockVersion = null)
- * @method Service|null findOneBy(array $criteria, array $orderBy = null)
- * @method Service[]    findAll()
- * @method Service[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method IService|null find($id, $lockMode = null, $lockVersion = null)
+ * @method IService|null findOneBy(array $criteria, array $orderBy = null)
+ * @method IService[]    findAll()
+ * @method IService[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ServiceRepository extends ServiceEntityRepository
 {
@@ -26,7 +26,7 @@ class ServiceRepository extends ServiceEntityRepository
         parent::__construct($registry, $entityClass);
     }
 
-    public function save(Service $entity, bool $flush = false): void
+    public function save(IService $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -35,7 +35,7 @@ class ServiceRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Service $entity, bool $flush = false): void
+    public function remove(IService $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
