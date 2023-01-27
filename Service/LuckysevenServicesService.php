@@ -5,9 +5,9 @@ namespace Luckyseven\Bundle\LuckysevenServicesBundle\Service;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Luckyseven\Bundle\LuckysevenServicesBundle\Entity\EntityService;
-use Luckyseven\Bundle\LuckysevenServicesBundle\Entity\Service;
 use Doctrine\ORM\EntityRepository;
 use Luckyseven\Bundle\LuckysevenServicesBundle\Interface\IEntityHasServices;
+use Luckyseven\Bundle\LuckysevenServicesBundle\Interface\IService;
 
 class LuckysevenServicesService
 {
@@ -20,13 +20,13 @@ class LuckysevenServicesService
         $this->entityServiceRepository = $entityManager->getRepository(EntityService::class);
     }
 
-    public function createService(Service $service, $flush = true): Service
+    public function createService(IService $service, $flush = true): IService
     {
         $this->serviceRepository->save($service, $flush);
         return $service;
     }
 
-    public function deleteService(Service $service, $flush = true): Service
+    public function deleteService(IService $service, $flush = true): IService
     {
         $this->serviceRepository->remove($service, $flush);
         return $service;
@@ -39,7 +39,7 @@ class LuckysevenServicesService
             : $this->serviceRepository->findAll();
     }
 
-    public function getServiceById(int $serviceId): ?Service
+    public function getServiceById(int $serviceId): ?IService
     {
         return $this->serviceRepository->find($serviceId);
     }
@@ -49,7 +49,7 @@ class LuckysevenServicesService
         return $this->serviceRepository->findAllWithoutParent();
     }
 
-    public function addService(IEntityHasServices $entity, Service $service): Service
+    public function addService(IEntityHasServices $entity, IService $service): IService
     {
         $this->entityServiceRepository->addService($entity, $service);
         return $service;
@@ -62,7 +62,7 @@ class LuckysevenServicesService
         return $services;
     }
 
-    public function removeService(IEntityHasServices $entity, Service $service): Service
+    public function removeService(IEntityHasServices $entity, IService $service): IService
     {
         $this->entityServiceRepository->removeService($entity, $service);
         return $service;
